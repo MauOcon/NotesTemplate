@@ -1,2 +1,3 @@
 ## Core latex/pdflatex auxiliary files:
 *.log
+*.aux

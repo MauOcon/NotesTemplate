@@ -1,0 +1,77 @@
+\documentclass[10pt,letterpaper]{book}
+% babel: Este paquete establece las reglas tipográficas (y otras reglas) para el lenguaje especificado
+\usepackage[spanish]{babel} 
+%  inputenc: Indicamos la codificación que se utilizará en el documento por lo general ISO-8859-1(latin1)  o utf8
+\usepackage[utf8]{inputenc} 
+% Indicamos los margenes que tendrá el documento
+\usepackage[top=1in, bottom=1.25in, left=0.75in, right=0.75in]{geometry}
+% Permite el uso de unidades de medida
+\usepackage{siunitx}
+% amsmath: Comandos extras para matemáticas (cajas para ecuaciones, etc)
+\usepackage{amsmath} 
+% Simbolos matematicos (por lo tanto)
+\usepackage{amssymb} 
+% Incluir imágenes en LaTeX
+\usepackage{graphicx}
+%Podemos usar el especificador [H] en las figuras para que se queden donde queramos
+\usepackage{float} 
+ % Permite usar etiquetas fuera de elementos flotantes (etiquetas de figuras)
+\usepackage{capt-of}
+% Para que las referencias sean hipervínculos a las figuras o ecuaciones y aparezcan en color
+\usepackage[colorlinks=true,plainpages=true,citecolor=blue,linkcolor=blue]{hyperref}
+% Utilizar un glosario
+\usepackage[automake]{glossaries-extra}
+\include{gls/glossary}
+\makeglossaries
+% Utilizar apéndices
+\usepackage{appendix}
+\renewcommand{\appendixname}{Apéndices}
+\renewcommand{\appendixtocname}{Apéndices}
+\renewcommand{\appendixpagename}{Apéndices} 
+
+% Comando para poder cambiar el tamaño de las imágenes en un sólo lugar
+\newcommand{\imageWidth}{\textwidth}
+
+
+\author{Mauricio Ocón}
+\title{Plantilla}
+
+\begin{document}
+	%Crea una hoja de portada
+	\maketitle
+	%Muestra el índice
+	\tableofcontents	
+	% Para que aparezcan las referencias sin citar
+	\nocite{*}	
+	
+	%%%%%%% Capítulos %%%%%%%% 		
+	\include{chp/chapter1}
+	
+	\include{chp/chapter2}
+	
+	\include{chp/chapter3}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	
+	%%%%%%% Apéndices %%%%%%%%   	
+	\appendix   
+	\clearpage % o \cleardoublepage
+	\addappheadtotoc 
+	\appendixpage 
+	%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	%%%%%%% Anexos %%%%%%%% 
+	\include{chp/anexos1}
+	
+	\include{chp/anexos2}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	\printglossaries
+	
+	%%%%%%% Bibliografía %%%%%%%%
+	\bibliographystyle{bst/IEEEtran.bst} 
+	\addcontentsline{toc}{chapter}{Referencias}  
+	\bibliography{bib/IEEEabrv,bib/IEEEreferencias.bib} 
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+\end{document}
