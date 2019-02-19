@@ -1,3 +1,15 @@
 ## Core latex/pdflatex auxiliary files:
 *.log
 *.aux
+*.log
+mainNotesTemplate.bbl
+mainNotesTemplate.blg
+mainNotesTemplate.glg
+mainNotesTemplate.glo
+mainNotesTemplate.gls
+mainNotesTemplate.ist
+mainNotesTemplate.log
+mainNotesTemplate.out
+mainNotesTemplate.pdf
+mainNotesTemplate.synctex.gz
+mainNotesTemplate.toc
