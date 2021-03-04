@@ -1,8 +1,12 @@
-\documentclass[10pt,letterpaper]{book}
+\documentclass[10pt,letterpaper]{book}	
 % babel: Este paquete establece las reglas tipográficas (y otras reglas) para el lenguaje especificado
 \usepackage[spanish]{babel} 
 %  inputenc: Indicamos la codificación que se utilizará en el documento por lo general ISO-8859-1(latin1)  o utf8
 \usepackage[utf8]{inputenc} 
+% Para escribir comillas dobles
+\usepackage[style=mexican]{csquotes}
+% Para indicar secuencias de menús o combinacines de teclas
+\usepackage[os=mac, mackeys=symbols]{menukeys}
 % Indicamos los margenes que tendrá el documento
 \usepackage[top=1in, bottom=1.25in, left=0.75in, right=0.75in]{geometry}
 % Permite el uso de unidades de medida
@@ -13,6 +17,8 @@
 \usepackage{amssymb} 
 % Incluir imágenes en LaTeX
 \usepackage{graphicx}
+% Para poder especificar el ancho de la tabla 
+\usepackage{tabularx} 
 %Podemos usar el especificador [H] en las figuras para que se queden donde queramos
 \usepackage{float} 
  % Permite usar etiquetas fuera de elementos flotantes (etiquetas de figuras)
@@ -29,9 +35,11 @@
 \renewcommand{\appendixtocname}{Apéndices}
 \renewcommand{\appendixpagename}{Apéndices} 
 
-% Comando para poder cambiar el tamaño de las imágenes en un sólo lugar
-\newcommand{\imageWidth}{\textwidth}
+% Comando para poder cambiar el tamaño de las imágenes en un solo lugar
+\newcommand{\GlLineWidth}{\textwidth}
 
+%Paquete para listings-eclipse
+\usepackage{rsc/pckg/lstcustom}
 
 \author{Mauricio Ocón}
 \title{Plantilla}
