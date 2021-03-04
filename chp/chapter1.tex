@@ -1,4 +1,4 @@
-\chapter{Introducción}
+\chapter{Preámbulo}
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra sagittis sapien, mollis ornare dolor. Donec fermentum, justo vitae tristique accumsan, urna ex dignissim risus, vitae tempor ante arcu condimentum turpis. Vestibulum tincidunt nulla nec lacus laoreet porttitor. Donec placerat congue mi, cursus dictum dolor viverra vitae. Phasellus venenatis, sapien in congue ornare, augue quam rutrum justo, vel molestie arcu metus luctus urna. Praesent egestas et leo vel ullamcorper. Etiam porta lectus dolor, vitae commodo arcu posuere in. Duis cursus suscipit lacus et tempus. Ut aliquet porttitor tortor in accumsan. Fusce pretium erat non ante tempor ultrices. Donec lorem justo, tincidunt ac finibus sit amet, tempor et dui. Fusce fermentum tempor nisl in blandit. Nam eu neque accumsan, varius tortor in, dictum justo. Ut rutrum tempus tellus, at sollicitudin velit ullamcorper non. In vel velit diam. Sed eu lectus iaculis, porta nisi sit amet, faucibus odio.
 
@@ -8,7 +8,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra sagittis sa
 	
 	\begin{figure}[H]
 		\begin{center}
-			\includegraphics[width = 0.8\imageWidth]{rsc/img/TestImage}
+			\includegraphics[width = 0.8\GlLineWidth]{rsc/img/TestImage}
 			\captionof{figure}{\label{fig:testImgRef}Pie de imagen} 
 		\end{center} 
 	\end{figure}
@@ -24,6 +24,19 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra sagittis sa
 	\section{Sección 2}
 	
 	Vestibulum sollicitudin imperdiet nisl. Nullam eget nisi nunc. Quisque eget accumsan lorem, nec interdum neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam at metus dignissim, euismod diam in, maximus sem. Sed semper rhoncus lectus eu tempor.
+	
+	\begin{table}[H]			
+		\begin{tabularx}{\textwidth}{|c|X|}
+			\hline 
+			\textbf{Núm. de pin} & \textbf{Descripción} \\ \hline 
+			1. GND & Se conecta a nuestra referencia de 0 \si{\volt} \\ \hline 
+			2. TX & Se conecta al pin RX de nuestra interfaz para configurar el módulo \\ \hline 
+			4. ENB & Se conecta a nuestro voltaje de alimentación de 3.3 \si{\volt} \\ \hline 
+			7. RX & Se conecta al pin RX de nuestra interfaz para configurar el módulo \\ \hline 
+			8. VCC & Se conecta a nuestro voltaje de alimentación a 3.3 \si{\volt}  \\ \hline 
+		\end{tabularx} 
+		\caption{\label{tab:pines-conexion} Pines que deberán conectarse al módulo para configurarlo.}
+		\end{table}
 	
 	Vestibulum sollicitudin imperdiet nisl. Nullam eget nisi nunc. Quisque eget accumsan lorem, nec interdum neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam at metus dignissim, euismod diam in, maximus sem. Sed semper rhoncus lectus eu tempor.
 	
