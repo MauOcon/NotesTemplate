@@ -17,14 +17,34 @@
 \usepackage{amssymb} 
 % Incluir imágenes en LaTeX
 \usepackage{graphicx}
-% Para poder especificar el ancho de la tabla 
-\usepackage{tabularx} 
+
+
+
+
+
+% Entorno más moderno para generar tablas con muchas opciones y con mejor compatibilidad que tabularx
+\usepackage{tabularray}
+% Para que se numeren las figuras y tablas independientemente y relativas al capítulo. 
+%% Requiere tipo de documento book o report
+%% Requiere el paquete amsmath
+\numberwithin{figure}{chapter}
+\numberwithin{table}{chapter}
 %Podemos usar el especificador [H] en las figuras para que se queden donde queramos
 \usepackage{float} 
  % Permite usar etiquetas fuera de elementos flotantes (etiquetas de figuras)
 \usepackage{capt-of}
 % Para que las referencias sean hipervínculos a las figuras o ecuaciones y aparezcan en color
 \usepackage[colorlinks=true,plainpages=true,citecolor=blue,linkcolor=blue]{hyperref}
+
+\usepackage[dvipsnames]{xcolor}
+\usepackage{nicematrix}
+
+\colorlet{light-Red}{Red!50}
+\colorlet{light-Green}{Green!50}
+\colorlet{light-Cyan}{Cyan!50}
+
+
+
 % Utilizar un glosario
 \usepackage[automake]{glossaries-extra}
 \include{gls/glossary}
