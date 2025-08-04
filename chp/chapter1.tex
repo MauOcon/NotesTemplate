@@ -104,6 +104,33 @@
 	\end{tblr}
 	\caption{\label{tab:simple_tabularx} Pines que deberán conectarse al módulo para configurarlo.}
 	\end{table}
+	
+	Tabla con altura específica de filas \ref{tab:row_height}.
+	
+	\begin{table}[H]
+		\begin{tblr}{
+				%width = 0.7\textwidth,
+				%colspec = {|X[1,l,m]|X[40,l,m]|}, % Definimos la alineación en la especificación de columnas
+				%colspec = {|Q[l,m,10]|Q[c,m,90]},				
+				colspec = {|c|X[l]|},			
+				hlines,
+				vlines,		
+				rows = {m},
+				row{odd} = {bg=gray!30},
+				row{2-Z} = {4em},
+				%row{even} = {bg=red!30},
+				row{1} = {font=\bfseries, bg=gray!60, c}, % La primera fila centrada
+			}	
+			Exercise & English \\  
+			(a) &   \\  
+			(b) &   \\
+			(c) &   \\
+			(d) &   \\
+			(e) &   \\
+			(f) &   \\
+		\end{tblr}
+		\caption{\label{tab:row_height}}
+	\end{table}
 
 	
 %	\begin{tblr}{
