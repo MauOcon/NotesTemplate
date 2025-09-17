@@ -49,17 +49,28 @@
 \usepackage[automake]{glossaries-extra}
 \include{gls/glossary}
 \makeglossaries
+
 % Utilizar apéndices
 \usepackage{appendix}
 \renewcommand{\appendixname}{Apéndices}
 \renewcommand{\appendixtocname}{Apéndices}
 \renewcommand{\appendixpagename}{Apéndices} 
 
+\newcommand{\terminalinline}[1]{%
+	\colorbox{lightgray}{\texttt{\color{black}#1}}%
+}
+
+
 % Comando para poder cambiar el tamaño de las imágenes en un solo lugar
 \newcommand{\GlLineWidth}{\textwidth}
 
 %Paquete para listings-eclipse
 \usepackage{rsc/pckg/lstcustom}
+
+\DeclareRobustCommand{\codeinline}{\lstinline[style=terminal]}
+\DeclareRobustCommand{\inlineGit}[1]{%
+	\colorbox{gray!20}{\lstinline[style=gitStyle, breaklines=true]{#1}}%
+}
 
 \author{Mauricio Ocón}
 \title{Plantilla}
@@ -93,6 +104,7 @@
 	
 	\include{chp/anexos2}
 	%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
 	
 	\printglossaries
 	

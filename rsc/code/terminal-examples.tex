@@ -1,0 +1,217 @@
+\chapter{Terminal Examples}
+
+This chapter demonstrates various terminal command examples using the custom terminal style.
+
+\section{Basic Commands}
+
+\begin{lstlisting}[style=terminal, caption=File Operations]
+\$ ls -la
+total 64
+drwxr-xr-x  8 user user 4096 Jan 15 10:30 .
+drwxr-xr-x  3 user user 4096 Jan 15 10:25 ..
+-rw-r--r--  1 user user  220 Jan 15 10:30 .bashrc
+-rw-r--r--  1 user user  807 Jan 15 10:30 .profile
+drwxr-xr-x  2 user user 4096 Jan 15 10:30 Documents
+drwxr-xr-x  2 user user 4096 Jan 15 10:30 Downloads
+
+\$ mkdir new-project
+\$ cd new-project
+\$ touch README.md
+\$ echo "Hello World" > hello.txt
+\$ cat hello.txt
+Hello World
+\end{lstlisting}
+
+\section{System Administration}
+
+\begin{lstlisting}[style=terminal, caption=Package Management]
+\$ sudo apt update
+Hit:1 http://archive.ubuntu.com/ubuntu jammy InRelease
+Get:2 http://archive.ubuntu.com/ubuntu jammy-updates InRelease
+Reading package lists... Done
+Building dependency tree... Done
+
+\$ sudo apt install git curl wget
+Reading package lists... Done
+Building dependency tree... Done
+The following NEW packages will be installed:
+  curl git wget
+0 upgraded, 3 newly installed, 0 to remove
+
+\$ which git
+/usr/bin/git
+\$ git --version
+git version 2.34.1
+\end{lstlisting}
+
+\section{Development Tools}
+
+\begin{lstlisting}[style=terminal, caption=Git Operations]
+\$ git init
+Initialized empty Git repository in /home/user/project/.git/
+
+\$ git add .
+\$ git commit -m "Initial commit"
+[main (root-commit) a1b2c3d] Initial commit
+ 2 files changed, 10 insertions(+)
+ create mode 100644 README.md
+ create mode 100644 hello.txt
+
+\$ git remote add origin https://github.com/user/repo.git
+\$ git push -u origin main
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 285 bytes | 285.00 KiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
+\end{lstlisting}
+
+\section{Docker Commands}
+
+\begin{lstlisting}[style=terminal, caption=Docker Operations]
+\$ docker --version
+Docker version 20.10.21, build baeda1f
+
+\$ docker pull nginx:latest
+latest: Pulling from library/nginx
+a2abf6c4d29d: Pull complete
+a9edb18cadd1: Pull complete
+589b7251471a: Pull complete
+Status: Downloaded newer image for nginx:latest
+
+\$ docker run -d --name web-server -p 8080:80 nginx:latest
+f1a2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u2v3w4x5y6z7
+
+\$ docker ps
+CONTAINER ID   IMAGE          COMMAND                  STATUS
+f1a2b3c4d5e6   nginx:latest   "/docker-entrypoint.…"   Up 2 minutes
+
+\$ curl http://localhost:8080
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+</body>
+</html>
+\end{lstlisting}
+
+\section{Network and Process Management}
+
+\begin{lstlisting}[style=terminal, caption=System Monitoring]
+\$ ps aux | grep nginx
+root      1234  0.0  0.1  12345  6789 ?        Ss   10:30   0:00 nginx: master
+www-data  1235  0.0  0.0  12345  6789 ?        S    10:30   0:00 nginx: worker
+
+\$ netstat -tlnp | grep :80
+tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      1234/nginx
+
+\$ top -n 1 | head -10
+top - 10:35:42 up  2:15,  1 user,  load average: 0.08, 0.03, 0.01
+Tasks: 234 total,   1 running, 233 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  1.2 us,  0.8 sy,  0.0 ni, 97.8 id,  0.2 wa,  0.0 hi,  0.0 si
+MiB Mem :   7982.1 total,   5234.2 free,   1456.8 used,   1291.1 buff/cache
+MiB Swap:   2048.0 total,   2048.0 free,      0.0 used.   6234.5 avail Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
+ 1234 root      20   0   12345   6789   5678 S   0.0   0.1   0:00.12 nginx
+ 1235 www-data  20   0   12345   6789   5678 S   0.0   0.1   0:00.05 nginx
+\end{lstlisting}
+
+\section{File Search and Text Processing}
+
+\begin{lstlisting}[style=terminal, caption=Search and Text Operations]
+\$ find . -name "*.txt" -type f
+./hello.txt
+./docs/readme.txt
+./logs/error.txt
+
+\$ grep -r "Hello" .
+./hello.txt:Hello World
+./docs/readme.txt:Hello, this is a readme file
+
+\$ sed 's/Hello/Hi/g' hello.txt
+Hi World
+
+\$ awk '{print NR ": " \$0}' hello.txt
+1: Hello World
+
+\$ wc -l *.txt
+      1 hello.txt
+      5 readme.txt
+      6 total
+\end{lstlisting}
+
+\section{Archive and Compression}
+
+\begin{lstlisting}[style=terminal, caption=Archive Operations]
+\$ tar -czf backup.tar.gz Documents/
+\$ ls -lh backup.tar.gz
+-rw-r--r-- 1 user user 1.2M Jan 15 10:40 backup.tar.gz
+
+\$ tar -tzf backup.tar.gz | head -5
+Documents/
+Documents/file1.txt
+Documents/file2.txt
+Documents/subfolder/
+Documents/subfolder/file3.txt
+
+\$ unzip -l archive.zip
+Archive:  archive.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+     1234  01-15-2024 10:30   file1.txt
+     5678  01-15-2024 10:31   file2.txt
+---------                     -------
+     6912                     2 files
+\end{lstlisting}
+
+\section{Environment and Variables}
+
+\begin{lstlisting}[style=terminal, caption=Environment Management]
+\$ echo \$HOME
+/home/user
+
+\$ export MY_VAR="Hello Terminal"
+\$ echo \$MY_VAR
+Hello Terminal
+
+\$ env | grep PATH
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+\$ which python3
+/usr/bin/python3
+
+\$ python3 --version
+Python 3.10.6
+
+\$ pip3 list | head -5
+Package    Version
+---------- -------
+certifi    2022.9.24
+charset    4.0.0
+idna       3.4
+\end{lstlisting}
+
+\section{Error Examples}
+
+\begin{lstlisting}[style=terminal, caption=Common Errors and Solutions]
+\$ cd /nonexistent
+bash: cd: /nonexistent: No such file or directory
+
+\$ cat missing-file.txt
+cat: missing-file.txt: No such file or directory
+
+\$ sudo systemctl status nonexistent-service
+Unit nonexistent-service.service could not be found.
+
+\$ docker run invalid-image
+Unable to find image 'invalid-image:latest' locally
+docker: Error response from daemon: pull access denied
+
+\$ chmod 755 script.sh
+\$ ./script.sh
+Hello from script!
+Script executed successfully.
+\end{lstlisting}

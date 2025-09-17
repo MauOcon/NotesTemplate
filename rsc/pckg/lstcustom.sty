@@ -213,7 +213,8 @@
 	xleftmargin=0.5cm,
 	xrightmargin=0.5cm,
 	comment=[l]{\#},
-	commentstyle=\color{commentColor}
+	commentstyle=\color{commentColor},
+	language={}
 }
 
 % use proper tt font that supports bold printing, e.g. by
@@ -385,4 +386,45 @@
   moredelim=[il][\textcolor{darkgray}]{§§}
 }
 
+
+% Git language definition
+\definecolor{gitCommand}{rgb}{0.0,0.5,0.8}
+\definecolor{gitOption}{rgb}{0.6,0.4,0.0}
+\definecolor{gitBranch}{rgb}{0.0,0.6,0.0}
+\definecolor{gitHash}{rgb}{0.5,0.5,0.5}
+
+\lstdefinelanguage{Git}{
+	morekeywords={git, add, commit, push, pull, clone, fetch, merge, rebase, checkout, branch, status, log, diff, reset, stash, tag, remote, init, config, switch, -m, -a, -u, -f, --force, --hard, --soft, --mixed, --cached, --staged, --oneline, --graph, --all, --amend, --no-ff, --squash, -d, -b, -c, -D, -r, -v, --set-upstream, --delete, --prune},
+	keywordstyle=\color{gitCommand}\bfseries,
+	% otherkeywords={-m, -a, -u, -f, --force, --hard, --soft, --mixed, --cached, --staged, --oneline, --graph, --all, --amend, --no-ff, --squash, -d, -D, -r, -v, --set-upstream, --delete, --prune},
+	keywordstyle=[2]\color{gitOption},
+	morestring=[b]",
+	morestring=[b]',
+	stringstyle=\color{stringColor},
+	comment=[l]{\#},
+	commentstyle=\color{commentColor},
+	sensitive=true,
+	alsoletter={-},
+	moredelim=[s][\color{gitHash}]{[}{]},
+	moredelim=[is][\color{gitBranch}]{origin/}{\ },
+	moredelim=[is][\color{gitBranch}]{refs/heads/}{\ }
+}
+
+
+\lstdefinestyle{gitStyle}{
+	basicstyle=\small\ttfamily\color{black},
+	backgroundcolor=\color{lightgray},
+	breaklines=true,
+	postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+	frame=single,
+	framerule=0.5pt,
+	rulecolor=\color{darkgray},
+	showstringspaces=false,
+	tabsize=4,
+	xleftmargin=0.5cm,
+	xrightmargin=0.5cm,
+	comment=[l]{\#},
+	commentstyle=\color{commentColor},
+	language={Git}
+}
 

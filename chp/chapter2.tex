@@ -104,16 +104,45 @@
 
 Herramientas para mostrar código, comandos, etc.
 
-\section{Código}
+\section{Código en línea.}
 
-Puedes utilizar el siguiente comando para mostrar código dentro de un párrafo de texto:
+Se puede mostrar código dentro del párrafo de distintas formas. La forma recomendada se realiza definiendo colores, lenguaje y estilo en el archivo \emph{lstcustom.sty}. Por ejemplo, se muestra un comando git (listing \ref{lst:inline_git}) que utiliza las siguientes definiciones para resaltar las palabras reservadas de git: \inlineGit{git switch -c main}.
+\begin{description}
+	\item[Definir colores.] 
+	\item[]
+	\begin{itemize}
+		\item gitCommand
+		\item gitOption
+		\item gitBranch
+		\item gitHash
+	\end{itemize}
+	\item[Definir lenguaje.] Git
+	\item[Definir estilo.] gitStyle
+\end{description}
+
+Esto se logró con el siguiente comando:
+
+\begin{lstlisting}[caption={Código en línea con resaltado de palabras para git.}, label={lst:inline_git}, style=terminal]
+... reservadas de git: \inlineGit{git switch -c main}.
+\end{lstlisting}
+
+
+Otro ejemplo: \codeinline$\inlineGit{git switch -c main}.$
+
+Modo 1 de utilizar código en línea \inlineGit{git switch -c main}.
+
+Puedes utilizar el siguiente comando para mostrar código dentro de un párrafo de texto \lstinline[style=terminal]$<codigo en linea>$ ó \terminalinline{<código en línea>}:
+
+ 
+
+\lstinline[basicstyle=\small\ttfamily\color{darkgray},frame=single]$command$
 
 \begin{lstlisting}[caption={A simple listing.}, label={lst:simple}]
 	\lstinline$<codigo en linea>$
 \end{lstlisting}
 
 
-
+\section{Entorno de código.}
 
 \subsection{Eclipse (Java)}
 
