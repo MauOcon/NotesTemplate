@@ -365,4 +365,117 @@ select dd.data from dane dd
 	
 	\keys{\ctrl+C} equals \keys{\ctrl + C}.
 	
+\section{Árbol de directorios.}
+
+Para mostrar árboles de directorios se utiliza el paquete \emph{dirtree}. A continuación se muestra un ejemplo para mostrar un árbol de directorios.
+
+\dirtree{%
+	.1 /.
+	.2 bin.
+	.2 home.
+	.3 jeancome.
+	.4 texmf.
+	.5 tex.
+	.6 latex.
+	.7 dirtree.
+	.3 jeancomeson.
+	.3 jeancomedaughter.
+	.2 usr.
+	.3 bin.
+	.3 games.
+	.4 fortunes.
+	.3 include.
+	.3 local.
+	.4 bin.
+	.4 share.
+	.5 texmf.
+	.6 fonts.
+	.6 metapost.
+	.6 tex.
+	.3 share.
+	}
 	
+También se puede incluir una etiqueta al utilizarlo dentro de un entorno \emph{figure}, por ejemplo (figure \ref{fig:programming_tools-dirtree}).
+
+\begin{figure}[htbp] % Use 'figure' environment for floating
+	%\centering % Center the dirtree
+	\dirtree{%
+		.1 Root Directory.
+		.2 Subdirectory 1.
+		.3 File A.txt.
+		.3 File B.pdf.
+		.2 Subdirectory 2.
+		.3 Another File.tex.
+	}
+	\caption{Example of a directory tree structure.} % Add your caption here
+	\label{fig:programming_tools-dirtree} % Optional: Add a label for referencing
+\end{figure}
+
+
+
+\begin{figure}
+	\centering
+	\framebox[\textwidth]{%
+		\begin{minipage}{0.2\textwidth}
+			\dirtree{%
+				.1 \textbf{NDLTD}.
+				.2 \textbf{OCLC}.
+				.3 \vdots.
+				.3 x.xml.
+				.3
+				\vdots.
+			}
+		\end{minipage}
+	}
+	\caption{Framing a dirtree-generated figure}
+\end{figure}
+
+
+\begin{figure}
+	\centering
+	\framebox{%
+	\begin{subfigure}[b]{0.3\textwidth}
+		\dirtree{%
+			.1 \textbf{NDLTD}.
+			.2 \textbf{OCLC}.
+			.3 \vdots.
+			.3 x.xml.
+			.3 \vdots.
+		}
+		\caption{dirtree1}
+		\label{fig:dirtree1}
+	\end{subfigure}
+}
+	\framebox{%
+	\begin{subfigure}[b]{0.3\textwidth}
+		\dirtree{%
+			.1 \textbf{NDLTD}. 
+			.2 \textbf{OCLC}. 
+			.3 \textbf{2010}. 
+			.4 \vdots. 
+			.4 x.xml. 
+			.4 \vdots. 
+			.3 \vdots. 
+		}
+		\caption{dirtree2}
+		\label{fig:dirtree2}
+	\end{subfigure}
+}
+\framebox{%
+	\begin{subfigure}[b]{0.3\textwidth}
+		\dirtree{%
+			.1 \textbf{NDLTD}. 
+			.2 \textbf{OCLC}. 
+			.3 \textbf{2010}. 
+			.4 \textbf{z}. 
+			.5 \vdots. 
+			.5 x.xml. 
+			.5 \vdots. 
+			.3 \vdots. 
+		}
+		\caption{dirtree3}
+		\label{fig:dirtree3}
+	\end{subfigure}
+}
+	\caption{Combined dirtree structures}\label{fig:dirtrees}
+\end{figure}
