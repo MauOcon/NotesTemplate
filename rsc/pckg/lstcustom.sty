@@ -14,6 +14,7 @@
 
 \usepackage{color}
 \usepackage{etoolbox}
+\usepackage{listingsutf8}
 \usepackage{listings}
 \usepackage[T1]{fontenc}
 
@@ -275,6 +276,22 @@
   morestring=[b]",
   morestring=[b]'
 }
+
+\lstdefinelanguage{TypeScript}{
+	morekeywords=[1]{let, string, break, continue, delete, else, for, function, if, in,
+		new, return, this, typeof, var, void, while, with},
+	% Literals, primitive types, and reference types.
+	morekeywords=[2]{false, null, true, boolean, number, undefined,
+		Array, Boolean, Date, Math, Number, String, Object},
+	% Built-ins.
+	morekeywords=[3]{eval, parseInt, parseFloat, escape, unescape, subscribe, pipe,imports},
+	sensitive,
+	morecomment=[s]{/*}{*/},
+	morecomment=[l]//,
+	morecomment=[s]{/**}{*/}, % JavaDoc style comments
+	morestring=[b]',
+	morestring=[b]"
+}[keywords, comments, strings]
 
 \lstdefinelanguage{HTML5}{
   language=html,
