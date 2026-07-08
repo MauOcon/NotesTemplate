@@ -2,7 +2,72 @@
 
 \section{Configuración global del documento.}
 
+\tmplCodeItem{<text>}
+
 \section{Paquetes}
+
+	\subsection{Babel.}
+	
+	El paqute \tmplLatexPackage{babel} añade soporte multilenguaje. Adapta el documento a las convenciones de un lenguaje en específico.
+	
+	\begin{description}
+		\item[Separación.] Carga la separación correcta entre palabras del lenguaje.
+		\item[Traduce cadenas.] Cambia cadenas de texto como \textquote{Chapter}, \textquote{Table of Contents}, \textquote{References}, etc. al lenguaje objetivo.
+		\item[Reglas tipográficas.] Aplica convenciones específicas del lenguaje para espaciado, puntuación y citas.
+		\item[Formato de fechas.]
+		\item[Abreviaturas.]
+	\end{description}
+	
+		\chaptername	
+	\today
+	
+	\selectlanguage{english}
+	\chaptername	
+	\today
+	\begin{otherlanguage}{english}
+		\today
+	\end{otherlanguage}
+	
+	\selectlanguage{spanish}
+	
+	\subsection{Inputenc.}
+	
+	Permite especificar al usuario la codificación del archivo fuente
+	
+	\subsection{csquotes.}
+	
+	% Comillas básicas (se adaptan al idioma activo)
+	\enquote{Texto entre comillas}
+	% → "Texto entre comillas" (mexicano)
+	% → "Texto entre comillas" (english)
+	
+	% Comillas anidadas (alterna estilo automáticamente)
+	\enquote{Texto externo \enquote{texto interno} continúa}
+	% → "Texto externo 'texto interno' continúa"
+	
+	% Comillas foráneas (fuerza estilo de otro idioma)
+	\foreignquote{english}{This is quoted in English style}
+	
+	% Cita en bloque (para citas largas, usa indentación)
+	\blockquote{Un párrafo largo que se formatea como cita en bloque.}
+	
+	% Comilla textual con cita bibliográfica
+	\textquote[fuente]{Texto citado}
+	
+	% Cita con referencia (requiere biblatex)
+	\textcquote{IEEEreferencias:Ref1}{Texto citado de la fuente}
+	
+	Según el autor, \enquote{la ciencia avanza \enquote{a pasos agigantados} cada día}.
+	
+	\foreignquote{english}{Knowledge is power.}
+	
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra sagittis sapien, mollis ornare dolor. Donec fermentum, justo vitae tristique accumsan, urna ex dignissim risus, vitae tempor ante arcu condimentum turpis. Vestibulum tincidunt nulla nec lacus laoreet porttitor. Donec placerat congue mi, cursus dictum dolor viverra vitae. Phasellus venenatis, sapien in congue ornare, augue quam rutrum justo, vel molestie arcu metus luctus urna. Praesent egestas et leo vel ullamcorper. Etiam porta lectus dolor, vitae commodo arcu posuere in. Duis cursus suscipit lacus et tempus. Ut aliquet porttitor tortor in accumsan. Fusce pretium erat non ante tempor ultrices. Donec lorem justo, tincidunt ac finibus sit amet, tempor et dui. Fusce fermentum tempor nisl in blandit. Nam eu neque accumsan, varius tortor in, dictum justo. Ut rutrum tempus tellus, at sollicitudin velit ullamcorper non. In vel velit diam. Sed eu lectus iaculis, porta nisi sit amet, faucibus odio.
+	
+	\blockquote{Este es un texto largo que se presenta como cita en bloque,	con indentación especial para distinguirlo del texto principal.}
+	
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra sagittis sapien, mollis ornare dolor. Donec fermentum, justo vitae tristique accumsan, urna ex dignissim risus, vitae tempor ante arcu condimentum turpis. Vestibulum tincidunt nulla nec lacus laoreet porttitor. Donec placerat congue mi, cursus dictum dolor viverra vitae. Phasellus venenatis, sapien in congue ornare, augue quam rutrum justo, vel molestie arcu metus luctus urna. Praesent egestas et leo vel ullamcorper. Etiam porta lectus dolor, vitae commodo arcu posuere in. Duis cursus suscipit lacus et tempus. Ut aliquet porttitor tortor in accumsan. Fusce pretium erat non ante tempor ultrices. Donec lorem justo, tincidunt ac finibus sit amet, tempor et dui. Fusce fermentum tempor nisl in blandit. Nam eu neque accumsan, varius tortor in, dictum justo. Ut rutrum tempus tellus, at sollicitudin velit ullamcorper non. In vel velit diam. Sed eu lectus iaculis, porta nisi sit amet, faucibus odio.
+	
+
 
 \chapter{Contenido.}
 

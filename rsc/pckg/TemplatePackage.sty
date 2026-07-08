@@ -1,0 +1,278 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{TemplatePackage}[2026/06/15 My custom template package]
+\RequirePackage[type1]{sourcecodepro} % Fuente con más grosores o pesos disponibles
+
+% Adds actual font size + 1pt: \dimexpr\f@size pt + 1pt\relax
+\newcommand{\textthinmono}[1]{%
+	{%
+		\fontfamily{SourceCodePro-TLF}% 
+		\fontseries{el}% Available series: el (extra-light), l (light), m (regular), sb (semibold), b (bold), bx (black).
+		\fontsize{\dimexpr\f@size pt + 1pt\relax}{\dimexpr\f@size pt + 0pt\relax}%
+		\selectfont #1%
+	}%
+}
+
+\RequirePackage[dvipsnames]{xcolor}
+\RequirePackage{tcolorbox}
+\RequirePackage{fontawesome5} % for icons
+\RequirePackage{pdfcomment}
+
+\newcommand{\tmplLatexPackage}[1]{%
+	\pdftooltip{%		
+		\tcbox[
+		on line,
+		colback=gray!10,
+		colframe=gray!10,
+		boxrule=0pt,
+		boxsep=0pt,
+		left=0pt,
+		right=0pt,
+		top=0pt,
+		bottom=0pt
+		]{%
+			% BASIC COLORS, there are more with dvipsnames
+			% red, green, blue, cyan, magenta, yellow, black, gray, white
+			% darkgray, lightgray, brown, lime, olive, orange, pink, purple, teal, violet
+			\color{Violet}
+			\faBox\space
+			{\fontfamily{SourceCodePro-TLF}%
+				\fontseries{el}% Available series: el (extra-light), l (light), m (regular), sb (semibold), b (bold), bx (black).
+				\fontsize{\dimexpr\f@size pt + 0pt\relax}{\dimexpr\f@size pt + 0pt\relax}%
+				\selectfont #1%
+			}%
+		}%
+	}{LaTeX Package}%	
+}
+
+% Utilizar para hacer referencia a archivos físicos
+\newcommand{\tmplFile}[1]{%
+	\pdftooltip{%		
+		\tcbox[
+		on line,
+		colback=gray!15,
+		colframe=gray!15,
+		boxrule=0pt,
+		boxsep=1pt,
+		left=0pt,
+		right=0pt,
+		top=0pt,
+		bottom=0pt
+		]{%
+			\color{YellowOrange}
+			\faFile\space
+			{\fontfamily{SourceCodePro-TLF}%
+				\fontseries{m}%
+				\fontsize{\dimexpr\f@size pt + 0pt\relax}{\dimexpr\f@size pt + 0pt\relax}%
+				\selectfont #1%
+			}%
+		}%
+	}{File}%	
+}
+
+% Utilizar para hacer referencia a elementos dentro de archivos de código, por ejemplo etiquetas, palabras reservadas, etc.
+\newcommand{\tmplCodeItem}[1]{%		
+	\pdftooltip{%
+		\tcbox[
+		on line,
+		colback=gray!15,
+		colframe=gray!15,
+		boxrule=0pt,
+		boxsep=1pt,
+		left=0pt,
+		right=0pt,
+		top=0pt,
+		bottom=0pt
+		]{%
+			\color{Black}
+			%\faFile\space
+			{\fontfamily{SourceCodePro-TLF}%
+				\fontseries{m}%
+				\fontsize{\dimexpr\f@size pt + 0pt\relax}{\dimexpr\f@size pt + 0pt\relax}%
+				\selectfont #1%
+			}%
+		}%	
+	}{Item}
+}
+
+% Utilizar para hacer referencia las ramas de un repositorio.
+\newcommand{\tmplBranch}[1]{%		
+	\pdftooltip{%
+		\tcbox[
+		on line,
+		colback=gray!15,
+		colframe=gray!15,
+		boxrule=0pt,
+		boxsep=1pt,
+		left=0pt,
+		right=0pt,
+		top=0pt,
+		bottom=0pt
+		]{%
+			\color{Blue}
+			%\faFile\space
+			{\fontfamily{SourceCodePro-TLF}%
+				\fontseries{m}%
+				\fontsize{\dimexpr\f@size pt + 0pt\relax}{\dimexpr\f@size pt + 0pt\relax}%
+				\selectfont #1%
+			}%
+		}%	
+	}{Item}%
+}
+
+
+\RequirePackage{menukeys}
+% Utilizar para indicar la rutas en un archivo de código, por ejemplo el path de un elemento json o xml
+\newcommand{\tmplCodePath}[1]{
+	\menu{#1}
+}
+
+\newcommand{\tmplPath}[1]{
+	\directory{#1}
+}
+
+% Utilizar para escribir cosas que están por corroborar
+\newcommand{\tmplTemporal}[1]{%
+	\pdftooltip{%
+		\sethlcolor{Yellow!50}%
+		{
+			\color{BurntOrange}%
+			\fontfamily{SourceCodePro-TLF}%
+			\fontseries{m}%
+			\selectfont\hl{\faExclamationTriangle\space #1}
+		}%
+	}{Corroborar info}%
+}
+
+\newcommand{\tmplTerm}[1]{%
+	{\color{NavyBlue}\textbf{#1}}%
+}
+
+\newcommand{\tmplTermEn}[1]{%
+	{\color{NavyBlue}\textbf{\it#1}}%
+}
+
+
+\RequirePackage{tcolorbox}
+
+% Se utiliza para resaltar los objetivos de la sección
+\newcounter{objective}[section]
+\renewcommand{\theobjective}{\thesection.\arabic{objective}}
+
+\newtcolorbox{tmplObjective}[1][]{%
+	before upper={\refstepcounter{objective}\setlength{\parskip}{0pt}},
+	title={\large\textbf{Objetivo~\theobjective}},
+	colback=white,
+	colframe=black!30,
+	fontupper=\itshape,
+	left=10pt,
+	#1
+}
+
+\newtcolorbox{tmplSummary}[1][]{%
+	before upper={\refstepcounter{objective}\setlength{\parskip}{0pt}},
+	title={\large\textbf{Resumen~\theobjective}},
+	colback=white,
+	colframe=black!30,
+	fontupper=\itshape,
+	left=10pt,
+	#1
+}
+
+\newcounter{chaptersummary}[chapter]
+\renewcommand{\thechaptersummary}{\thechapter.\arabic{chaptersummary}}
+\newtcolorbox{tmplChapterSummary}[1][]{%
+	title={\large\textbf{Resumen del Capítulo~\thechapter}},
+	colback=white,
+	colframe=black!30,
+	fontupper=\itshape,
+	left=10pt,
+	before upper={\setlength{\parskip}{0pt}},
+	#1
+}
+
+
+
+\RequirePackage{changepage}
+\RequirePackage{etoolbox}
+% Cambiar aquí para modificar todas las citas: left, center, right
+\newcommand{\tmplquotealign}{right}
+\newlength{\tmplquotemargin}
+
+\newenvironment{tmplquote}[1]{%
+	\par\medskip
+	\def\tmpl@quoteauthor{#1}%
+	\setlength{\tmplquotemargin}{0.125\textwidth}%
+	\ifdefstring{\tmplquotealign}{center}{%
+		\begin{adjustwidth}{\tmplquotemargin}{\tmplquotemargin}%
+		}{%
+			\ifdefstring{\tmplquotealign}{right}{%
+				\begin{adjustwidth}{0.25\textwidth}{0pt}%
+				}{%
+					\begin{adjustwidth}{0pt}{0.25\textwidth}%
+					}%
+				}%
+				\itshape\noindent\ignorespaces
+			}{%
+				\par\nopagebreak\smallskip
+				\normalfont\raggedleft---\ \tmpl@quoteauthor\par
+			\end{adjustwidth}%
+			\medskip
+		}
+		
+		\RequirePackage{tikz}
+		\RequirePackage{xcolor}
+		
+		\newcommand{\colorcirc}[2][FF5733]{%
+			\definecolor{circcolor}{HTML}{#1}%
+			\tikz[baseline=-0.3ex]\draw[fill=circcolor, draw=black] (0,0) circle (#2);%
+		}
+		% Labels by work type
+		\newcommand{\lblFeature}{%
+			\colorcirc[0E8A16]{6pt}%
+		}
+		\newcommand{\lblBug}{%
+			\colorcirc[D73A4A]{6pt}%
+		}
+		\newcommand{\lblHotfix}{%
+			\colorcirc[B60205]{6pt}%
+		}
+		\newcommand{\lblDocs}{%
+			\colorcirc[0075CA]{6pt}%
+		}
+		\newcommand{\lblRefactor}{%
+			\colorcirc[FBCA04]{6pt}%
+		}
+		\newcommand{\lblChore}{%
+			\colorcirc[D4C5F9]{6pt}%
+		}
+		% Labels by priority
+		\newcommand{\lblCritical}{%
+			\colorcirc[B60205]{6pt}%
+		}
+		\newcommand{\lblHigh}{%
+			\colorcirc[D93F0B]{6pt}%
+		}
+		\newcommand{\lblMedium}{%
+			\colorcirc[FBCA04]{6pt}%
+		}
+		\newcommand{\lblLow}{%
+			\colorcirc[0E8A16]{6pt}%
+		}
+		% Labels by area
+		\newcommand{\lblFrontend}{%
+			\colorcirc[7057FF]{6pt}%
+		}
+		\newcommand{\lblBackend}{%
+			\colorcirc[5319E7]{6pt}%
+		}
+		\newcommand{\lblDatabase}{%
+			\colorcirc[1D76DB ]{6pt}%
+		}
+		\newcommand{\lblInfra}{%
+			\colorcirc[333333]{6pt}%
+		}
+		
+		% Define the newcommand: \textthinmono{Your Text}
+		%\newcommand{\textthinmono}[1]{{\fontfamily{lmtt}\fontseries{l}\fontsize{11}{16}\selectfont #1}}
+		
+		
