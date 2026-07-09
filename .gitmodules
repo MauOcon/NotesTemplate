@@ -1,4 +1,4 @@
 [submodule "rsc/pckg/template-package"]
 	path = rsc/pckg/template-package
 	url = git@github.com:MauOcon/latex-notes-kit.git
-	branch = main
+	branch = feature/4-java-notes-features
