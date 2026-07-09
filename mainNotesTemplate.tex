@@ -1,15 +1,27 @@
 \documentclass[10pt,letterpaper]{book}	
 % babel: Este paquete establece las reglas tipográficas (y otras reglas) para el lenguaje especificado
+\usepackage{datatool} % Se carga antes de babel para evitar warning
 \usepackage[english, spanish,es-noshorthands]{babel} 
+
 %  inputenc: Indicamos la codificación que se utilizará en el documento por lo general ISO-8859-1(latin1)  o utf8
 \usepackage[utf8]{inputenc} 
 % Para escribir comillas dobles
 \usepackage[style=mexican]{csquotes}
 
+% Simulamos que ya existe este comando para probar que se genere un warning de comando repetido 
+% con el definido en noteskit.sty, SECCIÓN: Aliases. 
+% Genera este warning 139: Alias \pkg no creado: ya existe. Usa \nkLatexPackage en su lugar
+\newcommand{\pkg}{algo}  % Comentar para eliminar warning.
 \makeatletter
-\def\input@path{{rsc/pckg/}}
+\def\input@path{{rsc/pckg/template-package/}{rsc/pckg/}}
 \makeatother
-\usepackage{TemplatePackage}  % finds styles/mypackage.sty
+\usepackage[
+	color-principal=RoyalBlue, 
+	color-secundario=RoyalBlue!30,
+	% modulos
+	sections,
+	code]
+{noteskit}  % finds styles/mypackage.sty
 
 % Para indicar secuencias de menús o combinacines de teclas
 %\usepackage[os=mac, mackeys=symbols]{menukeys}
@@ -66,7 +78,7 @@
 
 % Utilizar un glosario
 \usepackage[automake]{glossaries-extra}
-\include{gls/glossary}
+\input{gls/glossary}
 \makeglossaries
 
 % Utilizar apéndices
@@ -103,13 +115,13 @@
 	\nocite{*}	
 	
 	%%%%%%% Capítulos %%%%%%%% 		
-	\include{chp/chapter1}
+%	\include{chp/chapter1}
 	
 	\include{chp/package_ref}
 	
-	\include{chp/chapter2}
+%	\include{chp/chapter2}
 	
-	\include{chp/chapter3}
+%	\include{chp/chapter3}
 	%%%%%%%%%%%%%%%%%%%%%%%%%%
 	
 	
