@@ -1,0 +1,4 @@
+[submodule "rsc/pckg/template-package"]
+	path = rsc/pckg/template-package
+	url = https://github.com/MauOcon/latex-notes-kit
+	branch = main
