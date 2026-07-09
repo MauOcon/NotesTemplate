@@ -1,0 +1,132 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{noteskit}[2026/07/08 My notes template custom package]
+
+% ══════════════════════════════════════════════════════════════════════════════
+% SECCIÓN: Configurabilidad (pgfopts + keys)
+% CARACTERÍSTICA: Configurabilidad
+% ══════════════════════════════════════════════════════════════════════════════
+% El paquete acepta opciones clave-valor vía \usepackage[...]{noteskit} y/o
+% un archivo noteskit-local.cfg en el directorio del documento.
+% Todas las keys viven bajo el namespace /noteskit/ para evitar colisiones.
+% Convención de macros internos: prefijo \nk@ (no públicos).
+% Para usar los valores de las keys en el código, reemplazar los valores por el key
+% ──────────────────────────────────────────────────────────────────────────────
+\RequirePackage{pgfopts}
+% --- Keys del paquete ---
+% Cada key define una "variable" que el usuario puede configurar al cargar el paquete.
+% - /.cd — establece el "namespace". Todas las keys quedan bajo /noteskit/, evitando colisiones con otros paquetes.
+% - /.store in — cuando el usuario pasa un valor, se guarda en ese macro (\nk@colorprincipal, etc.). El prefijo \nk@ es convención para macros
+%   internos (no públicos).
+% - /.initial — valor por defecto si el usuario no pasa nada.
+\pgfkeys{
+	/noteskit/.cd,                              % "carpeta" donde viven tus keys
+	%
+	% --- Metadata ---
+	materia/.store in = \nk@materia,            % guarda el valor en un macro interno
+	materia/.initial  = {},                     % default: vacío
+	autor/.store in   = \nk@autor,
+	autor/.initial    = {},
+	%
+	% --- Colores ---
+	color-principal/.store in  = \nk@colorprincipal,
+	color-principal/.initial   = Violet,        % tu color actual
+	color-secundario/.store in = \nk@colorsecundario,
+	color-secundario/.initial  = black!30,      % el que usas en tmplObjective
+	%
+	% --- Flags para módulos (futuro) ---
+	% con-code/.is if = nk@code,               % descomentar cuando tengas el módulo
+}
+\ProcessPgfPackageOptions{/noteskit}
+
+
+
+% ══════════════════════════════════════════════════════════════════════════════
+% SECCIÓN: Configuración local por repositorio
+% CARACTERÍSTICA: Configurabilidad
+% ══════════════════════════════════════════════════════════════════════════════
+% Carga noteskit-local.cfg si existe en el directorio del .tex principal.
+% Se ejecuta DESPUÉS de \ProcessPgfPackageOptions → el .cfg sobreescribe
+% las opciones inline. Invertir el orden si se desea lo contrario.
+% ──────────────────────────────────────────────────────────────────────────────
+\InputIfFileExists{noteskit-local.cfg}{%
+	\PackageInfo{noteskit}{Configuración local (noteskit-local.cfg) cargada.}%
+}{%
+	\PackageInfo{noteskit}{No se encontró noteskit-local.cfg, usando defaults.}%
+}
+
+
+
+% ══════════════════════════════════════════════════════════════════════════════
+% SECCIÓN: Dependencias
+% ══════════════════════════════════════════════════════════════════════════════
+\RequirePackage[dvipsnames]{xcolor}
+\RequirePackage{tcolorbox}
+\RequirePackage{fontawesome5} % for icons
+\RequirePackage{hyperref}
+
+
+% ══════════════════════════════════════════════════════════════════════════════
+% SECCIÓN: Comandos y entornos públicos
+% CARACTERÍSTICA: Prefijos — todos los comandos usan prefijo tmpl*
+% ══════════════════════════════════════════════════════════════════════════════
+
+% ┌─────────────────────────────────────────────────────────────────────────────
+% │ \tmplLatexPackage{nombre}
+% ├─────────────────────────────────────────────────────────────────────────────
+% │ Descripción: Muestra un nombre de paquete LaTeX con estilo inline (ícono +
+% │              fuente monoespaciada). Útil para mencionar paquetes en el texto.
+% │ Configurable: color-principal (default: Violet) — color del ícono y texto.
+% │ Ejemplo:
+% │   El paquete \tmplLatexPackage{tcolorbox} permite crear cajas con estilo.
+% └─────────────────────────────────────────────────────────────────────────────
+
+\newcommand{\tmplLatexPackage}[1]{%		
+	\tcbox[
+	on line,
+	colback=gray!10,
+	colframe=gray!10,
+	boxrule=0pt,
+	boxsep=0pt,
+	left=0pt,
+	right=0pt,
+	top=0pt,
+	bottom=0pt
+	]{%
+		\color{\nk@colorprincipal}
+		\faBox\space
+		{\fontfamily{SourceCodePro-TLF}%
+			\fontseries{el}% Available series: el (extra-light), l (light), m (regular), sb (semibold), b (bold), bx (black).
+			\fontsize{\dimexpr\f@size pt + 0pt\relax}{\dimexpr\f@size pt + 0pt\relax}%
+			\selectfont #1%
+		}%
+	}%
+}
+
+% ┌─────────────────────────────────────────────────────────────────────────────
+% │ \begin{tmplObjective}[tcolorbox opts]
+% │   contenido
+% │ \end{tmplObjective}
+% ├─────────────────────────────────────────────────────────────────────────────
+% │ Descripción: Caja numerada para declarar objetivos de una sección.
+% │              Se numera automáticamente como sección.objetivo (ej: 2.1).
+% │              El contador se reinicia con cada nueva \section.
+% │ Configurable: color-secundario (default: black!30) — color del borde.
+% │ Ejemplo:
+% │   \begin{tmplObjective}
+% │     Comprender las propiedades de los espacios vectoriales.
+% │   \end{tmplObjective}
+% └─────────────────────────────────────────────────────────────────────────────
+\RequirePackage{tcolorbox}
+% Se utiliza para resaltar los objetivos de la sección
+\newcounter{objective}[section]
+\renewcommand{\theobjective}{\thesection.\arabic{objective}}
+
+\newtcolorbox{tmplObjective}[1][]{%
+	before upper={\refstepcounter{objective}\setlength{\parskip}{0pt}},
+	title={\large\textbf{Objetivo~\theobjective}},
+	colback=white,
+	colframe=\nk@colorsecundario,
+	fontupper=\itshape,
+	left=10pt,
+	#1
+}
