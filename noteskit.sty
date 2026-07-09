@@ -2,6 +2,19 @@
 \ProvidesPackage{noteskit}[2026/07/08 My notes template custom package]
 
 % ══════════════════════════════════════════════════════════════════════════════
+% SECCIÓN: Módulos
+% CARACTERÍSTICA: Módulos
+% ══════════════════════════════════════════════════════════════════════════════
+% El paquete noteskit está separado en varios módulos que se pueden cargar
+% solo si son necesarios, deben definirse aquí y agregarse a la sección de 
+% alias
+% ──────────────────────────────────────────────────────────────────────────────
+\newif\ifnk@sections
+\newif\ifnk@code
+
+
+
+% ══════════════════════════════════════════════════════════════════════════════
 % SECCIÓN: Configurabilidad (pgfopts + keys)
 % CARACTERÍSTICA: Configurabilidad
 % ══════════════════════════════════════════════════════════════════════════════
@@ -33,8 +46,9 @@
 	color-secundario/.store in = \nk@colorsecundario,
 	color-secundario/.initial  = black!30,      % el que usas en tmplObjective
 	%
-	% --- Flags para módulos (futuro) ---
-	% con-code/.is if = nk@code,               % descomentar cuando tengas el módulo
+	% --- Módulos ---
+	sections/.is if = nk@sections,            % carga noteskit-sections.sty
+	code/.is if     = nk@code,                % carga noteskit-code.	
 }
 \ProcessPgfPackageOptions{/noteskit}
 
@@ -58,6 +72,8 @@
 
 % ══════════════════════════════════════════════════════════════════════════════
 % SECCIÓN: Dependencias
+% ══════════════════════════════════════════════════════════════════════════════
+% Se recomienda declarar las dependencias que utilizará más de un módulo
 % ══════════════════════════════════════════════════════════════════════════════
 \RequirePackage[dvipsnames]{xcolor}
 \RequirePackage{tcolorbox}
@@ -92,70 +108,20 @@
 
 
 % ══════════════════════════════════════════════════════════════════════════════
-% SECCIÓN: Comandos y entornos públicos
-% CARACTERÍSTICA: Prefijos — todos los comandos usan prefijo tmpl*
+% SECCIÓN: Carga de módulos
+% CARACTERÍSTICA: Módulos
 % ══════════════════════════════════════════════════════════════════════════════
+% Cada módulo se carga solo si el usuario lo activó con la key correspondiente.
+% Los módulos asumen que las dependencias comunes ya están disponibles.
+% ──────────────────────────────────────────────────────────────────────────────
 
-% ┌─────────────────────────────────────────────────────────────────────────────
-% │ \nkLatexPackage{nombre}
-% ├─────────────────────────────────────────────────────────────────────────────
-% │ Descripción: Muestra un nombre de paquete LaTeX con estilo inline (ícono +
-% │              fuente monoespaciada). Útil para mencionar paquetes en el texto.
-% │ Configurable: color-principal (default: Violet) — color del ícono y texto.
-% │ Ejemplo:
-% │   El paquete \nkLatexPackage{tcolorbox} permite crear cajas con estilo.
-% └─────────────────────────────────────────────────────────────────────────────
+\ifnk@sections
+\RequirePackage{noteskit-sections}
+\fi
 
-\newcommand{\nkLatexPackage}[1]{%		
-	\tcbox[
-	on line,
-	colback=gray!10,
-	colframe=gray!10,
-	boxrule=0pt,
-	boxsep=0pt,
-	left=0pt,
-	right=0pt,
-	top=0pt,
-	bottom=0pt
-	]{%
-		\color{\nk@colorprincipal}
-		\faBox\space
-		{\fontfamily{SourceCodePro-TLF}%
-			\fontseries{el}% Available series: el (extra-light), l (light), m (regular), sb (semibold), b (bold), bx (black).
-			\fontsize{\dimexpr\f@size pt + 0pt\relax}{\dimexpr\f@size pt + 0pt\relax}%
-			\selectfont #1%
-		}%
-	}%
-}
-
-% ┌─────────────────────────────────────────────────────────────────────────────
-% │ \begin{nkObjective}[tcolorbox opts]
-% │   contenido
-% │ \end{nkObjective}
-% ├─────────────────────────────────────────────────────────────────────────────
-% │ Descripción: Caja numerada para declarar objetivos de una sección.
-% │              Se numera automáticamente como sección.objetivo (ej: 2.1).
-% │              El contador se reinicia con cada nueva \section.
-% │ Configurable: color-secundario (default: black!30) — color del borde.
-% │ Ejemplo:
-% │   \begin{nkObjective}
-% │     Comprender las propiedades de los espacios vectoriales.
-% │   \end{nkObjective}
-% └─────────────────────────────────────────────────────────────────────────────
-\RequirePackage{tcolorbox}
-% Se utiliza para resaltar los objetivos de la sección
-\newcounter{objective}[section]
-\renewcommand{\theobjective}{\thesection.\arabic{objective}}
-
-\newtcolorbox{nkObjective}[1][]{%
-	before upper={\refstepcounter{objective}\setlength{\parskip}{0pt}},
-	title={\large\textbf{Objetivo~\theobjective}},
-	colback=white,
-	colframe=\nk@colorsecundario,
-	fontupper=\itshape,
-	left=10pt,
-	#1
-}
+\ifnk@code
+\RequirePackage{noteskit-code}
+\fi
 
 
 
@@ -164,7 +130,17 @@
 % CARACTERÍSTICA: Prefijos
 % ══════════════════════════════════════════════════════════════════════════════
 % Aliases cortos para comandos frecuentes.
-% Se crean siempre. Si hay conflicto, se emite warning y se usa el nombre con prefijo.
+% Solo se crean si el módulo correspondiente está activo.
+% Si hay conflicto, se emite warning y se usa el nombre con prefijo.
 % ──────────────────────────────────────────────────────────────────────────────
 
+% --- Aliases de noteskit-sections ---
+\ifnk@sections
 \nk@alias{pkg}{\nkLatexPackage}
+\fi
+
+% --- Aliases de noteskit-code ---
+\ifnk@code
+\nk@alias{code}{\nkCodeItem}
+\nk@alias{branch}{\nkBranch}
+\fi
