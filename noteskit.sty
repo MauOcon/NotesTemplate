@@ -65,22 +65,48 @@
 \RequirePackage{hyperref}
 
 
+
+% ══════════════════════════════════════════════════════════════════════════════
+% SECCIÓN: Sistema de prefijos y aliases
+% CARACTERÍSTICA: Prefijos
+% ══════════════════════════════════════════════════════════════════════════════
+% Convención: todos los comandos públicos usan prefijo \nk (noteskit).
+% Los comandos frecuentes tienen un alias corto sin prefijo.
+% Antes de crear un alias, se verifica que no colisione con un comando existente.
+% ──────────────────────────────────────────────────────────────────────────────
+
+% Helper interno: crea un alias verificando que no exista conflicto.
+%   #1 = nombre del alias (sin backslash, ej: pkg)
+%   #2 = comando destino (con backslash, ej: \nkLatexPackage)
+\newcommand{\nk@alias}[2]{%
+	\@ifundefined{#1}{%
+		\expandafter\newcommand\csname #1\endcsname{#2}%
+	}{%
+		\PackageWarning{noteskit}{%
+			Alias \expandafter\string\csname #1\endcsname\space no creado:
+			ya existe. Usa \string#2 en su lugar%
+		}%
+	}%
+}
+
+
+
 % ══════════════════════════════════════════════════════════════════════════════
 % SECCIÓN: Comandos y entornos públicos
 % CARACTERÍSTICA: Prefijos — todos los comandos usan prefijo tmpl*
 % ══════════════════════════════════════════════════════════════════════════════
 
 % ┌─────────────────────────────────────────────────────────────────────────────
-% │ \tmplLatexPackage{nombre}
+% │ \nkLatexPackage{nombre}
 % ├─────────────────────────────────────────────────────────────────────────────
 % │ Descripción: Muestra un nombre de paquete LaTeX con estilo inline (ícono +
 % │              fuente monoespaciada). Útil para mencionar paquetes en el texto.
 % │ Configurable: color-principal (default: Violet) — color del ícono y texto.
 % │ Ejemplo:
-% │   El paquete \tmplLatexPackage{tcolorbox} permite crear cajas con estilo.
+% │   El paquete \nkLatexPackage{tcolorbox} permite crear cajas con estilo.
 % └─────────────────────────────────────────────────────────────────────────────
 
-\newcommand{\tmplLatexPackage}[1]{%		
+\newcommand{\nkLatexPackage}[1]{%		
 	\tcbox[
 	on line,
 	colback=gray!10,
@@ -103,25 +129,25 @@
 }
 
 % ┌─────────────────────────────────────────────────────────────────────────────
-% │ \begin{tmplObjective}[tcolorbox opts]
+% │ \begin{nkObjective}[tcolorbox opts]
 % │   contenido
-% │ \end{tmplObjective}
+% │ \end{nkObjective}
 % ├─────────────────────────────────────────────────────────────────────────────
 % │ Descripción: Caja numerada para declarar objetivos de una sección.
 % │              Se numera automáticamente como sección.objetivo (ej: 2.1).
 % │              El contador se reinicia con cada nueva \section.
 % │ Configurable: color-secundario (default: black!30) — color del borde.
 % │ Ejemplo:
-% │   \begin{tmplObjective}
+% │   \begin{nkObjective}
 % │     Comprender las propiedades de los espacios vectoriales.
-% │   \end{tmplObjective}
+% │   \end{nkObjective}
 % └─────────────────────────────────────────────────────────────────────────────
 \RequirePackage{tcolorbox}
 % Se utiliza para resaltar los objetivos de la sección
 \newcounter{objective}[section]
 \renewcommand{\theobjective}{\thesection.\arabic{objective}}
 
-\newtcolorbox{tmplObjective}[1][]{%
+\newtcolorbox{nkObjective}[1][]{%
 	before upper={\refstepcounter{objective}\setlength{\parskip}{0pt}},
 	title={\large\textbf{Objetivo~\theobjective}},
 	colback=white,
@@ -130,3 +156,15 @@
 	left=10pt,
 	#1
 }
+
+
+
+% ══════════════════════════════════════════════════════════════════════════════
+% SECCIÓN: Aliases
+% CARACTERÍSTICA: Prefijos
+% ══════════════════════════════════════════════════════════════════════════════
+% Aliases cortos para comandos frecuentes.
+% Se crean siempre. Si hay conflicto, se emite warning y se usa el nombre con prefijo.
+% ──────────────────────────────────────────────────────────────────────────────
+
+\nk@alias{pkg}{\nkLatexPackage}
