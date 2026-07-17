@@ -48,21 +48,5 @@ git submodule update --remote
 git add rsc/pckg/template-package/   
 git commit -m "Actualizar paquete a v1.3.0"
 ```
-
-### Agregar archivo de autocompletado a TexStudio
-
-  a. Copiar archivo .cwl a .config/texstudio/completion/user/
-  b. Habilitar en Options -> Configure Texstudio... -> Completion
-  c. Reiniciar TexStudio
-
-### Configurar
-
-### Agregar nuevo módulo
-
-### Agregar prefijo
-
-
-## Estructura de carpetas
-
-A continuación se muestra la estructura de carpetas sugerida para el uso de este paquete.
-
+## Setup
+  Ejecutar `gradle wrapper` antes de compilar (el wrapper no se versiona).

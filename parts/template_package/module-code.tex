@@ -1,0 +1,111 @@
+\chapter{Modulo de Código.}
+
+Para inicializar un nuevo proyecto con ejemplos de java. Esto creará un proyecto en la carpeta examples\_project
+
+\begin{lstlisting}[style=terminal]
+# En el nuevo proyecto de notas, desde la raíz:
+mkdir -p rsc/code/examples_project
+cd rsc/code/examples_project
+gradle init --type java-application --dsl groovy --package com.examples
+# Eliminar el .git en examples_project por que puede causar problemas
+rm -rf rsc/code/examples_project/.git
+# Luego editar build.gradle y settings.gradle con tus parámetros
+\end{lstlisting}
+
+Después de crear el proyecto se puede abrir con Intellij la carpeta examples\_project.
+
+Los parámetros a editar en el archivo \code{build.gradle} son: 
+
+\begin{itemize}
+    \item Group
+    \item Version
+    \item Java version
+    \item Dependencies
+    \item mainClass
+\end{itemize}
+
+\lstinputlisting[
+    caption={Archivo de gradle con parámetros configurados.}, 
+    label={lst:build.gradle file},
+    firstline=9, lastline=43, 
+    language=Java]
+{rsc/code/examples_project/app/build.gradle}
+
+En este punto el proyecto compila correctamente y se pueden agregar ejemplos creando paquetes bajo com.examples (e.g. com.examples.ch01.streams, com.examples.ch02.collections).
+
+\section{Resaltado de código.}
+
+    \subsection{Código en línea.}
+    
+    Se utiliza para indicar fragmentos de código dentro del texto.
+
+
+    \nkCode{source ~/.ansible-venv/bin/activate}
+    
+    \nkCode{git checkout -- rsc/pckg/template-package/noteskit-sections.sty}
+    
+    \nkCode{string name = "Mau";}
+    
+    \nkCode{ssh-keyscan 192.168.56.11 >> ~/.ssh/known_hosts}
+    
+    \code{ssh-keyscan 192.168.56.11 >> ~/.ssh/known_hosts}
+
+    \subsection{Comandos en línea.}
+    
+    Se utiliza para indicar comandos de la CLI dentro del texto o una tabla.
+
+
+    \nkCmd{HashMap<String, ~Int>}
+    
+    
+    \nkCmd{source ~/.ansible-venv/bin/activate}
+    
+    \nkCmd{git checkout -- rsc/pckg/template-package/noteskit-sections.sty}
+    
+    \nkCmd{string name = "Mau";}
+    
+    \nkCmd{ssh-keyscan 192.168.56.11 >> ~/.ssh/known_hosts}
+    
+    \cmd{ssh-keyscan 192.168.56.11 >> ~/.ssh/known_hosts}
+    
+    \begin{nkTable}{|X[l,m,1]|X[c,m,10]|X[l,m,40]|}{Ejemplo de tabla con comandos.}{tab:command_table_example}
+        \textbf{\#} &	Instrucción & Descripción  \\
+        1 & \nkCmd{python -m vent ~/.ansible-venv} & Crea un entorno virtual de Python en \nkCode{~/.ansible-venv}.\\
+    \end{nkTable}
+    
+    \begin{nkTable}{|c|c|X|}{Ejemplo de tabla.}{tab:command_table_example2}
+        \textbf{\#} & \textbf{Instrucción} & \textbf{Descripción} \\ 
+        1 & \nkCmd{python -m vent ~/.ansible-venv} &  Crea un entorno virtual de Python en \nkCode{/.ansible-venv}.\\
+        2 &  & Software para ejecutar programas Java. \\    
+    \end{nkTable}
+    
+    %\lstinline[style=terminal]{~/.ansible-venv}
+    
+    \begin{tblr}{colspec={|c|c|c|}}
+        {\ttfamily\small\color{OliveGreen}\fakeverb{~/.ansible-venv}}& $a\,b$ & \\
+    \end{tblr}
+    
+    otra tabla 
+    
+    \begin{tblr}{colspec={|X|X|X|}}
+        {\ttfamily\small\color{OliveGreen}\fakeverb{~/.ansible-venv}}& $a\,b$ & \\
+    \end{tblr}
+    
+    \subsection{Bloques de código.}
+    
+    \begin{lstlisting}[style=IntelliJLight]
+/**
+* @author John Doe
+* @param args Command line arguments
+*/
+@Override
+public static void main(String[] args) {
+    String message = "Hello World";
+    // TODO: Add more functionality
+    System.out.println(message);
+}
+    \end{lstlisting}
+    
+    \lstinputlisting[style=IntelliJDark, caption={A listing from the file
+        \ttfamily{Rectangle.java}}, label={lst:file}]{rsc/code/Rectangle.java}
+

@@ -1,3 +1,4 @@
+%% !TeX program = lualatex
 \documentclass[10pt,letterpaper]{book}	
 % babel: Este paquete establece las reglas tipográficas (y otras reglas) para el lenguaje especificado
 \usepackage{datatool} % Se carga antes de babel para evitar warning
@@ -16,12 +17,16 @@
 \def\input@path{{rsc/pckg/template-package/}{rsc/pckg/}}
 \makeatother
 \usepackage[
-	color-principal=RoyalBlue, 
-	color-secundario=RoyalBlue!30,
+	color-principal=gray, 
+	color-secundario=gray!50,
 	% modulos
 	sections,
-	code]
+    show-answers,
+	code,
+    codejava]
 {noteskit}  % finds styles/mypackage.sty
+
+
 
 % Para indicar secuencias de menús o combinacines de teclas
 \usepackage[os=mac, mackeys=symbols]{menukeys}
@@ -34,10 +39,10 @@
 % Simbolos matematicos (por lo tanto)
 \usepackage{amssymb} 
 % Para separar definiciones de teoremas
-\usepackage{amsthm}
+%\usepackage{amsthm}
 
-\theoremstyle{definition}
-\newtheorem{definition}{Definición}[chapter]
+%\theoremstyle{definition}
+%\newtheorem{definition}{Definición}[chapter]
 
 % Incluir imágenes en LaTeX
 \usepackage{graphicx}
@@ -90,9 +95,9 @@
 \newcommand{\GlLineWidth}{\textwidth}
 
 %Paquete para listings-eclipse
-\usepackage{rsc/pckg/lstcustom}
+%\usepackage{lstcustom}
 
-\DeclareRobustCommand{\codeinline}{\lstinline[style=terminal]}
+%\DeclareRobustCommand{\codeinline}{\lstinline[style=terminal]}
 \DeclareRobustCommand{\inlineGit}[1]{%
 	\colorbox{gray!20}{\lstinline[style=gitStyle, breaklines=true]{#1}}%
 }
@@ -112,6 +117,8 @@
 %	\include{chp/chapter1}
 	
 	\include{chp/package_ref}
+	\include{parts/template_package/module-sections}
+    \include{parts/template_package/module-code}
 	
 %	\include{chp/chapter2}
 	

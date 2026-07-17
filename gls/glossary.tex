@@ -1,9 +1,30 @@
-\newglossaryentry{Linux}
+\newglossaryentry{Linux} % Etiqueta que se usa para hacer referencia a la entrada del glosario
 {
-	name=linux,
+	name=linux, % Palabra o frase exacta que aparece en el glosario
+    plural=linuces,
 	description={is a generic term referring to the family of Unix-like
-		computer operating systems that use the Linux kernel},
-	plural=linuces
+		computer operating systems that use the Linux kernel}	
 }
 
-\newacronym{page quality}{PQ}{Page Quality}
+\newacronym{pq}{PQ}{Page Quality}
+
+%\newglossaryentry{application programming interface} % Etiqueta que se usa para hacer referencia a la entrada del glosario
+%{
+%    name=application programming interface, % Palabra o frase exacta que aparece en el glosario y en el cuerpo del texto.
+%    plural=application programming interfaces,
+%    description={es una pieza de código que permite a dos aplicaciones comunicarse entre sí para compartir información y funcionalidades. Se usan generalmente en bibliotecas de programación.[}	
+%}
+
+\newacronym[plural=APIs]
+{API} % etiqueta para hacer referencia
+{API} % entrada del glosario y cómo se muestra en el texto
+{Una API (\textit{Application Programming Interface} / Interfaz de Programación de Aplicaciones) es una pieza de código que permite a dos aplicaciones comunicarse entre sí para compartir información y funcionalidades. Se usan generalmente en bibliotecas de programación.}
+
+
+\newglossaryentry{computer}{name=computer, description={A programmable electronic device}}
+
+% {label}{}
+\newglossaryentry{modeling language}{
+    name={modeling language}, 
+    description={Lenguaje con reglas definidas para describir la estructura de un sistema de forma estandarizada.}
+}

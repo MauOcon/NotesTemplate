@@ -1,0 +1,280 @@
+\part{Paquete de plantilla.}
+
+\chapter{Modulo de Secciones.}
+
+\section{Resaltado de texto.}
+
+    \subsection{Término nuevo.}
+    
+    \begin{description}
+        \item[¿Qué se considera un término nuevo?.]\hfil
+        \begin{itemize}
+            \item Conceptos clave. Palabras propias del tema que el autor está explicando o definiendo (ej. taxonomía, hipervínculo).
+            \item Tecnicismos o jerga. Palabras especializadas de una disciplina que el lector general puede desconocer.
+            \item Neologismos: Palabras de reciente creación en el idioma o adaptaciones recientes.
+            \item Extranjerismo. Palabras de otros idiomas.
+        \end{itemize}
+        \item[Reglas de uso.] \hfil
+        \begin{itemize}
+            \item Primera aparición:  link al glosario.
+            \begin{itemize}
+                \item Si no es su definición, el glosario no hace referencia a esta primera aparición.
+            \end{itemize}
+            \item Los enlaces se resaltan en azul.      
+            \item El glosario hace referencia a su definición.    
+            \item En la definición, se utiliza un link que va al glosario y se resalta en negritas.
+            \item Las siguientes apariciones no se resaltan.              
+            \item \textbf{No resaltar con vínculo al glosario hasta después de la definición.} Esto para asegurar que solamente se haga referencia a términos que ya cuentan con una entrada en el glosario completa (con la referencia a su definición).
+        \end{itemize}        
+        \item[Ejemplos de términos nuevos.]\hfil
+        \begin{itemize}
+            \item Primera aparición que no es definición. \glshyperlink{API}.
+            \item Definición: siga el link del punto anterior y lo llevará a la definición, que es una entrada de glosario, en negritas.
+            \item Después de la primera aparición y aparte de la definición se usan letras comunes.
+            \item Los acrónimos, se explica su significado en la definición en el texto y en el glosario.            
+        \end{itemize}
+    \end{description}
+    
+    \subsection{Función metalingüistica.}
+    % REFERENCIAS
+    % https://concepto.de/funcion-metalinguistica/
+    % https://www.rae.es/libro-estilo-lengua-espa%C3%B1ola/clase-de-letra#13
+    % https://marianruiz.com/cursiva-o-comillas/
+    % https://www.fundeu.es/wp-content/uploads/2013/05/CursivasGuiaFundeu.pdf
+    
+    
+    La función metalingüistica del lenguaje se da cuando utilizamos la lengua para hablar del propio lenguaje. Esta función se centra en el código, es decir, en la lengua y sirve para:
+    
+    \begin{itemize}
+        \item Analizar el lenguaje. Explicar el funcionamiento de una lengua desde alguna disciplina lingüistica, como la ortografía, la sintaxis o la semántica.
+        \item Realizar definiciones. Se usa para definir palabras.
+        \item Se usa para traducir términos, expresiones u oraciones en otra lengua.
+        \item Explicar algo que se mencionó previamente. Se usa para aclarar algo que se dijo antes.
+    \end{itemize}
+    
+        \subsubsection{Reglas.}
+        
+        Clave para distinguir el uso normal y uso metalingüistico.
+        
+        \begin{itemize}
+            \item Preguntarte: ¿puedo reemplazar la palabra por su definición y la oración sigue teniendo sentido?
+            \begin{itemize}
+                \item \textquote{El \textbf{sprint} dura dos semanas} - \textquote{El \textbf{periodo corto de trabajo} dura dos semanas}: Tiene sentido, es uso.
+                \item \textquote{El término \textbf{sprint} proviene del inglés} - \textquote{El término \textbf{periodo corto de trabajo} proviene del inglés}: No tiene sentido, es mención.
+            \end{itemize}
+            \item Si puedes señalar el término y decir \textquote{esta secuencia de letras...} o \textquote{esta palabra que se escribe así...}, es mención y va en cursiva. Si el término está funcionando normalmente dentro de la oración (refiriéndose a su significado), es uso y va en redondas.
+        \end{itemize}
+        
+        \subsubsection{Ejemplos.}
+    
+   
+        
+        \begin{itemize}
+            \item \textit{Abrir} es el antónimo de \textit{cerrar}, por que sus significados son opuestos.
+            \item ¿Qué significa la palabra \textit{átomo}?
+            \item Cuando dije \textit{naranja}, me refería a la fruta, no al color.
+            \item En inglés, \textit{vaca} se dice \textit{cow}.
+            \item \textit{Cocinar} es un infinitivo.
+            \item Un adjetivo es una palabra que designa una característica o cualidad.
+            \item ¿Cómo se pronuncia \textit{hat} en inglés?
+            \item \textit{Metáfora} es una palabra esdrújula por que su acento recae en la antepenúltima sílaba.
+            \item \textit{Hardware} es un anglicismo, es decir, un término que proviene del inglés.
+            \item \textit{México} es un sustantivo propio.
+        \end{itemize}
+        
+        \begin{itemize}
+            % "sprint" es extranjerismo + mención → cursiva por ambas razones
+            \item El término \textit{sprint} proviene del inglés.
+            
+            % "API" no es extranjerismo, pero aquí hablas sobre la sigla como objeto lingüístico → cursiva
+            % "Application Programming Interface" es mención de cómo se dice en inglés → cursiva
+            \item La sigla \textit{API} significa \textit{Application Programming Interface}.
+            
+            % "branch" y "fork" son extranjerismos + mención → cursiva
+            \item No confundir \textit{branch} con \textit{fork}.
+            
+            
+            % === USO NORMAL (usas la palabra con su significado) ===
+            
+            % "sprint" es extranjerismo → cursiva (no por mención, sino por extranjerismo)
+            \item El \textit{sprint} dura dos semanas.
+            
+            % "API" no es extranjerismo → redondas, la estás usando normalmente
+            \item Se conecta a la API del servicio.
+            
+            % "branch" es extranjerismo → cursiva (por extranjerismo, no por mención)
+            \item Creó un \textit{branch} para la nueva funcionalidad.
+            
+            % La palabra "murciélago" no se refiere al animal, sino a la palabra como objeto.
+            % Prueba: "La palabra [animal volador nocturno] contiene todas las vocales" → no tiene sentido.
+            % → Es mención → cursiva.
+            \item La palabra \textit{murciélago} contiene todas las vocales.
+            
+            % Aquí preguntas por el significado de la palabra, no la estás usando para referirte
+            % a la capacidad de adaptarse. Hablas sobre la palabra en sí.
+            % Prueba: "¿Qué significa [capacidad de adaptarse]?" → no tiene sentido.
+            % → Es mención → cursiva.
+            \item ¿Qué significa la palabra \textit{resiliencia}?
+            
+            % "esdrújulas" aquí se refiere a una categoría de palabras, no a una palabra específica
+            % que estés mencionando como objeto. Estás USANDO el término con su significado normal.
+            % Prueba: "Las [palabras con acento en la antepenúltima sílaba] siempre llevan tilde" → sí tiene sentido.
+            % → Es uso → redondas.
+            \item Las palabras esdrújulas siempre llevan tilde.
+            
+            % "-ar" no es una palabra que estés usando con significado propio, es un fragmento
+            % lingüístico que estás mostrando como objeto. No puedes sustituirlo por su definición.
+            % → Es mención → cursiva.
+            \item En español, los verbos terminados en \textit{-ar} pertenecen a la primera conjugación.
+            
+        \end{itemize}
+    
+    \subsection{Convenciones.}
+    
+    \begin{description}
+        \item[Término nuevo.]\hfil
+        \begin{itemize}
+            \item Agregar enlace al glosario resaltado en azul y negritas al definirlo.
+            \item Si la primera mención del término fué antes de su definición. Solo cuando ya existe la definición y la entrada del glosario, agregar una referencia al glosario en la primer mención. La entrada del glosario no deberá hacer referencia a la primera mención, sino mantener la referencia que ya tenía a la definición.
+            \item Los términos de uso común en el texto y asentados en la disciplina del texto, aunque sean extranjerismos, no se resaltarán con cursivas.
+            \item Términos que no son de uso común en el texto o frases completas en otros idiomas se resaltarán con cursivas.
+        \end{itemize}
+    \end{description}
+
+\begin{description}
+    \item[Término nuevo (primera vez)].
+\end{description}
+
+\begin{itemize}
+    \item Extranjerismos: \nkForeignism{branch},% \fr{commit}.
+    \item Nombres de herramientas: Git, SonarQube.
+    \item Términos nuevos (primera vez): Conceptos clave,  azul + link al glosario.    
+
+\end{itemize}
+
+El paquete \nkLatexPackage{tcolorbox} permite crear cajas con estilo.
+
+
+
+\section{Secciones.}
+
+    \subsection{Objetivo.}
+
+    \begin{nkObjective}
+        Comprender las propiedades de los espacios vectoriales.
+    \end{nkObjective}
+    
+    \subsection{Definición.}
+    
+    \begin{definition}
+        \label{def:definition_api}
+        Una \textbf{\gls{API}} (\textit{Application Programming Interface} / Interfaz de Pogramación de Aplicaciones) es una pieza de código que permite a dos aplicaciones comunicarse entre sí para compartir información y funcionalidades. Se usan generalmente en bibliotecas de programación.
+    \end{definition}
+    
+    
+    
+    \begin{definition}[modeling language]
+        \label{def:definition_example}
+        Los \glslink{modeling language}{machine} se desarrollaron precisamente para estos escenarios y demuestran reglas claramente definidas para descripción estructurada de un sistema. Permiten representar diferentes vistas de la arquitectura.
+    \end{definition}
+1
+\section{Tablas.}
+
+\begin{definition}[Domain-Driven Design]
+	\label{def:ddd}
+	Domain-Driven Design is an approach to software development that centers the development on programming a domain model that has a rich understanding of the process and rules of a domain.
+\end{definition}
+
+\begin{table}[H]
+	\centering
+	\begin{tblr}{
+			width = 0.95\textwidth,
+			colspec = {|X[l,m,2]|X[c,m, 1]|X[l,m,4]|}, % Definimos la alineación en la especificación de columnas
+			hlines,
+			vlines,		
+			rows = {m},
+			row{odd} = {bg=gray!30},
+			%row{even} = {bg=red!30},
+			row{1} = {font=\bfseries, bg=gray!60, c}, % La primera fila centrada
+		}	
+		\textbf{Nombre} & \textbf{Acrónimo} & \textbf{Significado} \\ \hline 
+		Java Development Kit & JDK & El software para programadores que desean escribir programas en Java. \\  
+		Java Runtime Environment & JRE & El software para consumidores que desean ejecutar programas Java.\\ 		
+	\end{tblr}
+	\caption{\label{tab:template_table} Ejemplo de tabla formateada.}
+\end{table}
+
+
+\ref{tab:table_example}
+
+\begin{nkTable}{|X[l,m,2]|X[c,m,1]|X[l,m,4]|}{Ejemplo de tabla.}{tab:table_example}
+	\textbf{Nombre} & \textbf{Acrónimo} & \textbf{Significado} \\ 
+	Java Development Kit & JDK & Software para \linebreak programadores. \\  
+	Java Runtime Environment & JRE & Software para ejecutar programas Java. \\    
+\end{nkTable}
+
+\begin{nkTable}[0.8\textwidth]{|X[l,m,2]|X[c,m,1]|X[l,m,4]|}{Ejemplo de tabla.}{tab:table_example2}
+    \textbf{Nombre} & \textbf{Acrónimo} & \textbf{Significado} \\ 
+    Java Development Kit & JDK & Software para programadores. \\  
+    Java Runtime Environment & JRE & Software para ejecutar programas Java. \\    
+\end{nkTable}
+
+
+
+
+\section{Preguntas}
+
+Ejemplos de uso
+
+Opción múltiple con una respuesta correcta:
+
+\begin{nkQuestion}{¿Qué comando actualiza un submódulo?}
+    \nkAnswer[correct]{git submodule update --remote}
+    \nkAnswer{git pull --submodules}
+    \nkAnswer{git fetch submodule}
+\end{nkQuestion}
+
+Opción múltiple con varias correctas:
+
+\begin{nkQuestion}{¿Cuáles son principios SOLID? (selecciona todos los correctos)}
+    \nkAnswer[correct]{Single Responsibility}
+    \nkAnswer[correct]{Open/Closed}
+    \nkAnswer{Don't Repeat Yourself}
+    \nkAnswer[correct]{Liskov Substitution}
+    \nkAnswer{Keep It Simple}
+\end{nkQuestion}
+
+Respuesta única (tipo flashcard):
+
+\begin{nkQuestion}{¿Qué archivo almacena la configuración de submódulos en git?}
+    \nkAnswer[correct]{.gitmodules}
+\end{nkQuestion}
+
+
+% Opción múltiple — en modo estudio muestra las opciones sin check/cross
+\begin{nkQuestion}{¿Qué comando actualiza un submódulo?}
+    \nkAnswer[correct]{git submodule update --remote}
+    \nkAnswer{git pull --submodules}
+    \nkAnswer{git fetch submodule}
+\end{nkQuestion}
+
+% Pregunta abierta — en modo estudio muestra solo la línea en blanco
+\begin{nkQuestion}[open]{¿Qué archivo almacena la configuración de submódulos?}
+    \nkAnswer[correct]{.gitmodules}
+\end{nkQuestion}
+
+    \subsection{Abreviación}
+    
+    \begin{nkQuestion}[open]{¿Qué archivo almacena la configuración de submódulos?}
+        \ans[correct]{.gitmodules}
+    \end{nkQuestion}
+    
+    
+\section{Referencias}
+
+
+\begin{itemize}
+    \nkRefcap{IEEEreferencias:Ref1}{Libro 1}
+    \nkRefcap{onlineAwsConcepts}{Curso}
+\end{itemize}
+
